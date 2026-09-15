@@ -12,19 +12,23 @@ CREATE TABLE Funcionario (
     CIDADE VARCHAR(100) NOT NULL,
     ESTADO CHAR(2) NOT NULL,
     SETOR VARCHAR(80) NOT NULL,
-    SALARIO DECIMAL(10,2) NOT NULL
+    SALARIO DECIMAL(10,2) NOT NULL,
+	DT_NASC DATE NOT NULL,
+	DA_ADMISSAO DATE NOT NULL
 );
 
 -- 04
-INSERT INTO Funcionario (NOME, EMAIL, CIDADE, ESTADO, SETOR, SALARIO)
+INSERT INTO Funcionario (NOME, EMAIL, CIDADE, ESTADO, SETOR, SALARIO, DT_NASC, DA_ADMISSAO)
 VALUES 
-    ('Ana Souza', 'ana@infonet.com', 'Sao Paulo', 'SP', 'TI', 5200.00),
-    ('Carlos Lima', 'carlos@infonet.com', 'Rio de Janeiro', 'RJ', 'RH', 3800.00),
-    ('Fernanda Costa', 'fernanda@infonet.com', 'Campinas', 'SP', 'Financeiro', 4500.00),
-    ('Roberto Alves', 'roberto@infonet.com', 'Belo Horizonte', 'MG', 'TI', 6100.00),
-    ('Juliana Matos', 'juliana@infonet.com', 'Curitiba', 'PR', 'Comercial', 2900.00),
-    ('Marcos Pereira', 'marcos@infonet.com', 'Sao Paulo', 'SP', 'RH', 3200.00),
-    ('Patricia Nunes', 'patricia@infonet.com', 'Porto Alegre', 'RS', 'Financeiro', 4100.00);
+    ('Ana Souza', 'ana@infonet.com', 'Sao Paulo', 'SP', 'TI', 5200.00, '1992-05-14', '2020-03-15'),
+    ('Carlos Lima', 'carlos@infonet.com', 'Rio de Janeiro', 'RJ', 'RH', 3800.00, '1988-11-20', '2019-08-01'),
+    ('Fernanda Costa', 'fernanda@infonet.com', 'Campinas', 'SP', 'Financeiro', 4500.00, '1995-02-08', '2021-11-10'),
+    ('Roberto Alves', 'roberto@infonet.com', 'Belo Horizonte', 'MG', 'TI', 6100.00, '1985-07-30', '2017-02-01'),
+    ('Juliana Matos', 'juliana@infonet.com', 'Curitiba', 'PR', 'Comercial', 2900.00, '2001-09-12', '2023-05-22'),
+    ('Marcos Pereira', 'marcos@infonet.com', 'Sao Paulo', 'SP', 'RH', 3200.00, '1998-04-25', '2022-01-17'),
+    ('Patricia Nunes', 'patricia@infonet.com', 'Porto Alegre', 'RS', 'Financeiro', 4100.00, '1990-12-03', '2018-09-05');
+
+SELECT * FROM Funcionario
 
 -- 05
 UPDATE Funcionario
@@ -78,4 +82,21 @@ SELECT
     DATENAME(MONTH, DT_NASC) AS NomeDoMes
 FROM 
     Funcionario;
+
+SELECT
+	ID_FUNCIONARIO
+FROM
+	Funcionario
+WHERE
+	YEAR(DT_NASC) = 2007;
+
+
+SELECT
+	NOME,
+	DAY(DT_NASC) AS DiaDeNascimento
+FROM
+	Funcionario
+WHERE
+	MONTH(DT_NASC) = 4 AND
+	YEAR(DT_NASC) = 2008
 
