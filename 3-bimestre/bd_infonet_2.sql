@@ -100,3 +100,28 @@ WHERE
 	MONTH(DT_NASC) = 4 AND
 	YEAR(DT_NASC) = 2008
 
+
+SELECT 
+    NOME,
+	DT_NASC AS DataInicial,
+	DATEADD(MONTH, 2, DT_NASC) AS DataAcrescida
+FROM 
+    Funcionario
+
+
+SELECT 
+    NOME,
+    DATEDIFF(YEAR, DT_NASC, GETDATE()) AS Idade
+FROM 
+    Funcionario;
+
+SELECT 
+	ID_FUNCIONARIO,
+	NOME,
+	YEAR(DT_NASC) AS AnoNascimento
+FROM
+	Funcionario
+WHERE
+	YEAR(DT_NASC) = 2000 AND
+	MONTH(DT_NASC) BETWEEN 3 AND 5;
+	
